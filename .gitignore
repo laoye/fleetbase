@@ -5,6 +5,8 @@
 .pnpm-store
 .tool-versions
 docker-compose.override.yml
+docker/Dockerfile.local
+console/Dockerfile.local
 npm-debug.log
 yarn-error.log
 console/public/extensions.json
@@ -56,3 +58,4 @@ builds/osx/frankenphp
 *.dll
 *.so
 *.dylib
+.idea/
