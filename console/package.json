@@ -35,7 +35,7 @@
         "@ember/legacy-built-in-components": "^0.4.2",
         "@fleetbase/dev-engine": "^0.2.12",
         "@fleetbase/ember-core": "^0.3.12",
-        "@fleetbase/ember-ui": "^0.3.21",
+        "@fleetbase/ember-ui": "workspace:*",
         "@fleetbase/fleetops-data": "^0.1.25",
         "@fleetbase/fleetops-engine": "workspace:*",
         "@fleetbase/iam-engine": "^0.1.7",
@@ -151,7 +151,7 @@
     "pnpm": {
         "overrides": {
             "@fleetbase/ember-core": "^0.3.12",
-            "@fleetbase/ember-ui": "^0.3.21",
+            "@fleetbase/ember-ui": "workspace:*",
             "@fleetbase/fleetops-data": "^0.1.25"
         }
     },

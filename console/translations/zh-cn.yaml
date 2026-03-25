@@ -1,5 +1,9 @@
 app:
   name: Fleetbase
+ember-power-select:
+  search-message: 输入以搜索
+  no-matches-message: 未找到匹配结果
+  loading-message: 加载中...
 common:
   new: 新建
   create: 创建
@@ -138,6 +142,7 @@ common:
   change-password: 更改密码
   password: 密码
   confirm-password: 确认密码
+  recommended: 推荐
   email: 电子邮件
   username: 用户名
   remember-me: 记住我
@@ -447,6 +452,7 @@ component:
     button-text: 或选择电子表格上传
     spreadsheets: 电子表格
     upload-queue: 上传队列
+    download-template: 下载导入模板 (XLSX)
   dropzone:
     file: 文件
     drop-to-upload: 拖拽上传
@@ -491,6 +497,100 @@ component:
     widget-name: '{widgetName} 小部件'
     select-widgets: 选择小部件
     close-and-save: 关闭并保存
+  create-or-join-org:
+    join-organization: 加入组织
+    create-new-organization: 创建新组织
+    organization-id: 组织 ID
+    organization-id-help: 输入您要加入的组织 ID。
+  install-prompt:
+    confirm-install: 您正在尝试安装扩展"{extensionName}"。确定要继续安装吗？
+    access-warning: 某些扩展需要访问您的资源。
+  verify-email:
+    title: 验证您的电子邮件地址。
+    subtitle: 重新验证您的电子邮件地址，然后点击发送继续。
+    enter-code: 输入验证码
+    enter-code-help: 输入您在邮件中收到的验证码，如果收件箱中没有请检查垃圾邮件。
+    verify-email: 验证您的电子邮件地址
+    verify-email-help: 请再次确认您的电子邮件地址是否正确。
+  verify-by-sms:
+    title: 改用手机号码验证。
+    subtitle: 确认下方的手机号码，然后点击发送以通过短信接收验证码。
+    verify-phone: 验证您的手机号码
+    verify-phone-help: 请再次确认您的手机号码是否正确。
+  click-to-copy:
+    copied: 已复制！
+    click-to-copy: 点击复制
+  click-to-reveal:
+    click-to-reveal: 点击显示
+  activity-log:
+    hide-advanced: 隐藏详细信息
+    show-advanced: 显示详细信息 ({count})
+    from: 从
+    to: 改为
+    loading: 正在加载活动记录...
+    no-activity: 暂无活动记录
+  create-dashboard:
+    name: 仪表盘名称
+    name-help: 输入您的仪表盘名称
+  export:
+    format: 格式
+    select-format: 选择导出格式...
+    export-format: 导出格式
+    export-rows: 以您首选的格式导出 {rowCount} 行数据。
+    csv-options: CSV 导出选项
+    csv-description: 数据将以逗号分隔值的格式导出，适用于 Excel 和其他电子表格应用程序。
+    json-options: JSON 导出选项
+    json-description: 数据将以结构化 JSON 格式导出，适用于 API 消费和数据处理。
+    file-name: 文件名
+    file-extension-auto: 文件扩展名将自动添加
+  save-report:
+    report-title: 报告标题
+    enter-title: 输入报告标题...
+    optional-description: 可选描述...
+    select-category: 选择类别...
+    schedule-report: 定时生成此报告
+    frequency: 频率
+  tip-tap:
+    youtube-url: Youtube 视频 URL
+    youtube-url-help: 您要插入的 Youtube 视频的 URL
+    height: 高度
+    width: 宽度
+    youtube-height-help: Youtube 视频的高度
+    youtube-width-help: Youtube 视频的宽度
+    rows: 行数
+    columns: 列数
+    rows-help: 表格的行数
+    columns-help: 表格的列数
+  coordinates:
+    latitude: 纬度
+    longitude: 经度
+    select-from-map: 从地图选择
+    enter-address: 输入地址
+    lookup: 查找
+  bulk-search:
+    title: 批量搜索
+    placeholder: 输入以逗号分隔的 ID 进行批量搜索
+  custom-field:
+    manager-title: 自定义字段管理器
+    new-field-group: 新建字段组
+    create-new-field: 创建新自定义字段
+    grid-size: 网格大小
+    no-groups: 暂无自定义字段组
+    add-first-group: 添加您的第一个字段组以开始为以下对象添加自定义字段
+    field-group-name: 字段组名称
+    field-label: 字段标签
+    field-description: 字段描述
+    field-help-text: 字段帮助文本
+    field-required: 字段为必填
+    field-editable: 字段可编辑
+    field-type: 字段类型
+    select-field-type: 选择字段类型...
+    field-model-type: 字段模型类型
+    select-model-type: 选择模型类型
+    column-span: "Meta: 列跨度"
+    column-span-size: 列跨度大小
+    field-options: 字段选项
+    add-new-option: 添加新选项
 services:
   dashboard-service:
     create-dashboard-success-notification: 新仪表板 `{dashboardName}` 创建成功。
@@ -581,11 +681,53 @@ console:
     modal-accept-button-text: 是的，我要切换组织
     success-notification: 您已切换组织
   account:
+    sidebar:
+      auth: 认证
+      organizations: 组织
     index:
       upload-new: 上传新文件
       phone: 您的电话号码。
       photos: 照片
       timezone: 选择您的时区。
+    auth:
+      page-title: 账户认证
+      enter-new-password: 输入新密码
+      confirm-change-password: 确认并更改密码
+      2fa-settings: 双因素认证设置
+      loading-2fa: 正在加载双因素认证设置...
+      save-2fa-settings: 保存双因素认证设置
+      enable-2fa: 启用双因素认证
+      require-2fa: 要求用户设置双因素认证
+      choose-method: 选择认证方式
+      choose-method-help: 除了用户名和密码外，您还需要输入一个验证码（通过应用或短信发送）来登录您的账户
+      password-changed: 密码修改成功。
+      validate-password-body: 您需要先验证当前密码才能进行更改。
+      2fa-saved: 双因素认证设置已保存。
+    organizations:
+      create-organization: 创建组织
+      your-organizations: 您的组织
+      member-since: 加入时间
+      leave: 离开
+      switch: 切换
+      leave-organization: 离开组织
+      delete-organization: 删除组织
+      edit-organization: 编辑组织
+      transfer-and-leave: 转移所有权并离开
+      unable-leave-only: 无法离开您唯一的组织。
+      unable-delete-only: 无法删除您唯一的组织。
+      no-delete-rights: 您没有权限删除此组织。
+      confirm-delete: 您确定要删除组织 {organizationName} 吗？
+      confirm-delete-body: 此操作将永久删除与该组织相关的所有数据，包括订单、成员和设置。<br /><br /><strong>此操作无法撤销。</strong>
+      owner-leave-msg: 作为 <strong>{organizationName}</strong> 的所有者，离开组织需要您指定一位新的所有者。
+      select-owner-help: 请从下拉菜单中选择一位成员，以便在您继续之前转移所有权。
+      select-new-owner: 选择新所有者
+      select-member: 选择成员
+      sole-owner-msg: 您是 <strong>{organizationName}</strong> 的唯一所有者。
+      sole-owner-delete-warning: 离开后，该组织及其所有数据将被永久删除。
+      confirm-proceed: 您确定要继续吗？
+      cannot-be-undone: 此操作无法撤销。
+      leave-confirm-msg: 您确定要离开组织 <strong>{organizationName}</strong> 吗？
+      leave-access-warning: 您将无法再访问该组织的资源和设置。
   admin:
     menu:
       overview: 概览
@@ -671,6 +813,7 @@ console:
       upload-new-backdrop: 上传新背景
       organization-timezone: 选择您组织的默认时区。
       select-timezone: 选择时区。
+      settings-saved: 组织设置已成功保存。
   extensions:
     title: 扩展即将推出！
     message: 请在即将发布的版本中回来查看，我们正在准备推出扩展仓库和市场。
@@ -721,14 +864,47 @@ install:
   failed-message-sent: 安装失败！点击下面的按钮重试安装。
   retry-install: 重试安装
   start-install: 开始安装
+notification-tray:
+  unread-notification: 条未读通知
+  received: 收到时间：
+  no-unread-notifications: 没有未读通知
+  view-all-notifications: 查看所有通知
+
+chat:
+  start-chat: 发起聊天
+  untitled-chat: 未命名聊天
+  unread: 条未读
+  attachment: 个附件
+  add-attachment: 添加附件
+  type-message-placeholder: 在此输入消息
+  send: 发送
+  end-chat-confirm-title: 您确定要结束此聊天（{chatTitle}）吗？
+  end-chat-confirm-body: 一旦结束此聊天，所有人将无法再访问。
+  leave-chat-confirm-title: 您确定要离开此聊天吗？
+  remove-participant-confirm-title: 您确定要将参与者（{participantName}）从聊天中移除吗？
+  leave-chat-confirm-body: 一旦离开此聊天，除非您被重新添加为参与者，否则将无法再访问此聊天
+  remove-participant-confirm-body: 继续操作将把该参与者从聊天中移除。
+  edit-channel-name: 编辑聊天频道名称
+  name-required: 需要输入名称才能保存更改。
+  channel-name: 频道名称
+  channel-name-help: 为您的聊天频道输入新名称。
+
 layout:
   header:
     menus:
       organization:
+        home: 主页
         settings: 组织设置
         create-or-join: 创建或加入组织
         explore-extensions: 探索扩展
+        admin: 管理后台
+        logout: 退出登录
       user:
         view-profile: 查看个人资料
         keyboard-shortcuts: 显示键盘快捷键
         changelog: 更新日志
+        developers: 开发者
+        join-discord: 加入 Discord 社区
+        help-support: 帮助与支持
+        documentation: 文档
+        logout: 退出登录

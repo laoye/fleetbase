@@ -17,7 +17,7 @@
 	branch = main
 [submodule "packages/ember-ui"]
 	path = packages/ember-ui
-	url = git@github.com:fleetbase/ember-ui.git
+	url = https://github.com/laoye/ember-ui.git
 	branch = main
 [submodule "packages/iam-engine"]
 	path = packages/iam-engine

@@ -1,6 +1,11 @@
 app:
   name: Fleetbase
 
+ember-power-select:
+  search-message: Type to search
+  no-matches-message: No results found
+  loading-message: Loading...
+
 common:
   new: New
   create: Create
@@ -145,6 +150,7 @@ common:
   change-password: Change Password
   password: Password
   confirm-password: Confirm Password
+  recommended: Recommended
   email: Email
   username: Username
   remember-me: Remember Me
@@ -480,6 +486,7 @@ component:
     button-text: or select spreadsheets to upload
     spreadsheets: spreadsheets
     upload-queue: Upload Queue
+    download-template: Download Import Template (XLSX)
 
   dropzone:
     file: file
@@ -532,6 +539,101 @@ component:
       {widgetName} Widget
     select-widgets: Select Widgets
     close-and-save: Close and Save
+
+  create-or-join-org:
+    join-organization: Join an Organization
+    create-new-organization: Create new Organization
+    organization-id: Organization ID
+    organization-id-help: Enter the ID of the organization you wish to join.
+  install-prompt:
+    confirm-install: You are attempting to install the extension "{extensionName}". Are you sure you wish to proceed with this installation?
+    access-warning: Some extensions require access to your resources.
+  verify-email:
+    title: Verify your email address.
+    subtitle: Re-verify your email address and click Send to continue.
+    enter-code: Enter verification code
+    enter-code-help: Enter the code you received in your email, please check spam if not in inbox.
+    verify-email: Verify your email address
+    verify-email-help: Have a second look and confirm your email address is correct.
+  verify-by-sms:
+    title: Let's verify your phone number instead.
+    subtitle: Confirm your phone number below and click send to receive a verification code by SMS.
+    verify-phone: Verify your phone number
+    verify-phone-help: Have a second look and confirm your phone number is correct.
+  click-to-copy:
+    copied: Copied!
+    click-to-copy: Click to copy
+  click-to-reveal:
+    click-to-reveal: Click to reveal
+  activity-log:
+    hide-advanced: Hide advanced
+    show-advanced: Show advanced ({count})
+    from: from
+    to: to
+    loading: Loading activity...
+    no-activity: No activity yet
+  create-dashboard:
+    name: Dashboard name
+    name-help: Enter the name of your dashboard
+  export:
+    format: Format
+    select-format: Select export format...
+    export-format: Export Format
+    export-rows: Export {rowCount} rows of data in your preferred format.
+    csv-options: CSV Export Options
+    csv-description: Data will be exported as comma-separated values, suitable for Excel and other spreadsheet applications.
+    json-options: JSON Export Options
+    json-description: Data will be exported as structured JSON, suitable for API consumption and data processing.
+    file-name: File Name
+    file-extension-auto: File extension will be added automatically
+  save-report:
+    report-title: Report Title
+    enter-title: Enter report title...
+    optional-description: Optional description...
+    select-category: Select category...
+    schedule-report: Schedule this report
+    frequency: Frequency
+  tip-tap:
+    youtube-url: Youtube Video URL
+    youtube-url-help: The URL to the Youtube video you want to insert
+    height: Height
+    width: Width
+    youtube-height-help: The Height of the Youtube video
+    youtube-width-help: The Width of the Youtube video
+    rows: Rows
+    columns: Columns
+    rows-help: The number of rows for the table
+    columns-help: The number of columns for the table
+  coordinates:
+    latitude: Latitude
+    longitude: Longitude
+    select-from-map: Select from map
+    enter-address: Enter address
+    lookup: Lookup
+  bulk-search:
+    title: Bulk Search
+    placeholder: "Input comma delimited ID's to perform a bulk search"
+  custom-field:
+    manager-title: Custom Fields Manager
+    new-field-group: New field group
+    create-new-field: Create new custom field
+    grid-size: Grid Size
+    no-groups: No custom field groups
+    add-first-group: Add your first field group to start adding custom fields for
+    field-group-name: Field Group Name
+    field-label: Field Label
+    field-description: Field Description
+    field-help-text: Field Help Text
+    field-required: Field is Required
+    field-editable: Field is Editable
+    field-type: Field Type
+    select-field-type: Select field type...
+    field-model-type: Field Model Type
+    select-model-type: Select model type
+    column-span: "Meta: Column-Span"
+    column-span-size: Column Span Size
+    field-options: Field Options
+    add-new-option: Add new option
 
 services:
   dashboard-service:
@@ -633,11 +735,53 @@ console:
     success-notification: You have switched organizations
 
   account:
-    index: 
+    sidebar:
+      auth: Auth
+      organizations: Organizations
+    index:
       upload-new: Upload new
       phone: Your phone number.
       photos: photos
       timezone: Select your timezone.
+    auth:
+      page-title: Account Auth
+      enter-new-password: Enter new Password
+      confirm-change-password: Confirm & Change Password
+      2fa-settings: 2FA Settings
+      loading-2fa: Loading User 2FA Settings...
+      save-2fa-settings: Save 2FA Settings
+      enable-2fa: Enable Two-Factor Authentication
+      require-2fa: Require Users to Set-Up 2FA
+      choose-method: Choose an authentication method
+      choose-method-help: In addition to your username and password, you'll have to enter a code (delivered via app or SMS) to sign in to your account
+      password-changed: Password changed successfully.
+      validate-password-body: You must validate your current password before it can be changed.
+      2fa-saved: 2FA Settings saved successfully.
+    organizations:
+      create-organization: Create Organization
+      your-organizations: Your Organizations
+      member-since: Member Since
+      leave: Leave
+      switch: Switch
+      leave-organization: Leave Organization
+      delete-organization: Delete Organization
+      edit-organization: Edit Organization
+      transfer-and-leave: Transfer Ownership and Leave
+      unable-leave-only: Unable to leave your only organization.
+      unable-delete-only: Unable to delete your only organization.
+      no-delete-rights: You do not have rights to delete this organization.
+      confirm-delete: Are you sure you want to delete the organization {organizationName}?
+      confirm-delete-body: This action will permanently remove all data, including orders, members, and settings associated with the organization. <br /><br /><strong>This action cannot be undone.</strong>
+      owner-leave-msg: As the owner of <strong>{organizationName}</strong>, leaving the organization requires you to nominate a new owner.
+      select-owner-help: Please select a member from the dropdown below to transfer ownership before you can proceed.
+      select-new-owner: Select a New Owner
+      select-member: Select a member
+      sole-owner-msg: You are the sole owner of <strong>{organizationName}</strong>.
+      sole-owner-delete-warning: By leaving, the organization will be permanently deleted along with all its data.
+      confirm-proceed: Are you sure you want to proceed?
+      cannot-be-undone: This action cannot be undone.
+      leave-confirm-msg: Are you sure you want to leave the organization <strong>{organizationName}</strong>?
+      leave-access-warning: You will no longer have access to its resources and settings.
 
   admin:
     menu:
@@ -726,6 +870,7 @@ console:
       upload-new-backdrop: Upload new backdrop
       organization-timezone: Select the default timezone for your organization.
       select-timezone: Select timezone.
+      settings-saved: Organization changes successfully saved.
 
   extensions:
     title: Extensions are coming soon!
@@ -783,14 +928,47 @@ install:
   retry-install: Retry Install
   start-install: Start Install
 
+notification-tray:
+  unread-notification: Unread Notification(s)
+  received: "Received:"
+  no-unread-notifications: No unread notifications
+  view-all-notifications: View all notifications
+
+chat:
+  start-chat: Start Chat
+  untitled-chat: Untitled Chat
+  unread: Unread
+  attachment: Attachment(s)
+  add-attachment: Add Attachment
+  type-message-placeholder: Type your message here
+  send: Send
+  end-chat-confirm-title: "Are you sure you wish to end this chat ({chatTitle})?"
+  end-chat-confirm-body: Once this chat is ended, it will no longer be accessible for anyone.
+  leave-chat-confirm-title: Are you sure you would like to leave this chat?
+  remove-participant-confirm-title: "Are you sure you wish to remove this participant ({participantName}) from the chat?"
+  leave-chat-confirm-body: Once you leave this chat you will not be able to access this chat unless you are added as a participant again
+  remove-participant-confirm-body: Proceeding will remove this participant from the chat.
+  edit-channel-name: Edit chat channel name
+  name-required: Name required to save changes.
+  channel-name: Channel Name
+  channel-name-help: Input a new name for your chat channel.
+
 layout:
   header:
     menus:
       organization:
+        home: Home
         settings: Organization settings
         create-or-join: Create or join organizations
         explore-extensions: Explore extensions
+        admin: Admin
+        logout: Logout
       user:
         view-profile: View profile
         keyboard-shortcuts: Show keyboard shortcuts
         changelog: Changelog
+        developers: Developers
+        join-discord: Join Discord Community
+        help-support: Help & Support
+        documentation: Documentation
+        logout: Logout

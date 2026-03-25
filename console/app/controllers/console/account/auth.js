@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
+
 import getTwoFaMethods from '@fleetbase/console/utils/get-two-fa-methods';
 
 /**
@@ -13,6 +14,7 @@ import getTwoFaMethods from '@fleetbase/console/utils/get-two-fa-methods';
  */
 export default class ConsoleAccountAuthController extends Controller {
     @service fetch;
+    @service intl;
     @service notifications;
     @service router;
     @service modalsManager;
@@ -130,7 +132,7 @@ export default class ConsoleAccountAuthController extends Controller {
                 password_confirmation: this.newConfirmPassword,
             });
 
-            this.notifications.success('Password change successfully.');
+            this.notifications.success(this.intl.t('console.account.auth.password-changed'));
         } catch (error) {
             this.notifications.serverError(error, 'Failed to change password.');
         }
@@ -148,7 +150,7 @@ export default class ConsoleAccountAuthController extends Controller {
         let isPasswordValid = false;
 
         yield this.modalsManager.show('modals/validate-password', {
-            body: 'You must validate your current password before it can be changed.',
+            body: this.intl.t('console.account.auth.validate-password-body'),
             onValidated: (isValid) => {
                 isPasswordValid = isValid;
             },
@@ -166,7 +168,7 @@ export default class ConsoleAccountAuthController extends Controller {
     @task *saveUserTwoFaSettings(twoFaSettings = {}) {
         try {
             yield this.fetch.post('users/two-fa', { twoFaSettings });
-            this.notifications.success('2FA Settings saved successfully.');
+            this.notifications.success(this.intl.t('console.account.auth.2fa-saved'));
         } catch (error) {
             this.notifications.serverError(error);
         }

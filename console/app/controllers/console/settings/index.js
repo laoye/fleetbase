@@ -27,6 +27,8 @@ export default class ConsoleSettingsIndexController extends Controller {
      */
     @service fetch;
 
+    @service intl;
+
     /**
      * the upload queue.
      *
@@ -63,7 +65,7 @@ export default class ConsoleSettingsIndexController extends Controller {
 
         try {
             yield this.model.save();
-            this.notifications.success('Organization changes successfully saved.');
+            this.notifications.success(this.intl.t('console.settings.index.settings-saved'));
         } catch (error) {
             debug(`Unable to save organization settings : ${error.message}`);
         }
