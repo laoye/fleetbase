@@ -42,3 +42,7 @@
 [submodule "packages/ledger"]
 	path = packages/ledger
 	url = git@github.com:fleetbase/ledger.git
+[submodule "packages/forbox"]
+	path = packages/forbox
+	url = git@codeup.aliyun.com:63bd402d915b61498cd0c2d9/forbox/forbox.git
+	branch = main
