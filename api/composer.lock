@@ -2419,7 +2419,7 @@
             "dist": {
                 "type": "path",
                 "url": "../packages/forbox",
-                "reference": "48e10df9a547032c60e761be91f67b19d7843d47"
+                "reference": "ea9ebffaeb552739d7e6662a4eb893ddc1300f30"
             },
             "require": {
                 "fleetbase/core-api": "*",
