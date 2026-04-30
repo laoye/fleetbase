@@ -1,5 +1,6 @@
 # Ignore files not needed for docker to build microservice image
 node_modules/*
+**/node_modules
 api/vendor/*
 api/storage/framework/cache/*
 api/storage/logs/*

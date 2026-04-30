@@ -15,7 +15,8 @@ ARG ENVIRONMENT=production
 ENV PATH=/root/.pnpm/bin:$PATH
 
 # Install global dependencies
-RUN npm install -g ember-cli pnpm
+# pnpm 钉死到 9.5.0（与 console/package.json 的 packageManager 字段一致；pnpm 10 改了 hoisting，找不到 ember-cli/bin/ember）
+RUN npm install -g ember-cli pnpm@9.5.0
 
 # Install git
 RUN apk update && apk add git openssh-client
