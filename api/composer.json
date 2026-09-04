@@ -59,6 +59,13 @@
             }
         },
         {
+            "type": "path",
+            "url": "../packages/fleetops",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
             "type": "composer",
             "url": "https://registry.fleetbase.io"
         }

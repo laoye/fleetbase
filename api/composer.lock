@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c300753368e00438c77c763cd24a9c1",
+    "content-hash": "59cb43de4f81cde4463851d480f1b483",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -2327,16 +2327,10 @@
         {
             "name": "fleetbase/fleetops-api",
             "version": "0.6.45",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fleetbase/fleetops.git",
-                "reference": "35263ce04a6ac0b83acc6c0d1272caeabe9a4cc6"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fleetbase/fleetops/zipball/35263ce04a6ac0b83acc6c0d1272caeabe9a4cc6",
-                "reference": "35263ce04a6ac0b83acc6c0d1272caeabe9a4cc6",
-                "shasum": ""
+                "type": "path",
+                "url": "../packages/fleetops",
+                "reference": "052b23650b1d7c77e709b8b6133152a562b0f343"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^2.0",
@@ -2388,7 +2382,30 @@
                     "Fleetbase\\FleetOps\\Seeders\\": "server/seeders/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Fleetbase\\Tests\\": "server/tests/"
+                }
+            },
+            "scripts": {
+                "lint": [
+                    "php-cs-fixer fix -v"
+                ],
+                "test:lint": [
+                    "php-cs-fixer fix -v --dry-run"
+                ],
+                "test:types": [
+                    "phpstan analyse --ansi --memory-limit=4G"
+                ],
+                "test:unit": [
+                    "pest --colors=always"
+                ],
+                "test": [
+                    "@test:lint",
+                    "@test:types",
+                    "@test:unit"
+                ]
+            },
             "license": [
                 "AGPL-3.0-or-later"
             ],
@@ -2410,11 +2427,10 @@
                 "last-mile",
                 "tms"
             ],
-            "support": {
-                "issues": "https://github.com/fleetbase/fleetops/issues",
-                "source": "https://github.com/fleetbase/fleetops/tree/v0.6.45"
-            },
-            "time": "2026-04-24T03:54:23+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "fleetbase/forbox-api",
@@ -2422,7 +2438,7 @@
             "dist": {
                 "type": "path",
                 "url": "../packages/forbox",
-                "reference": "ea9ebffaeb552739d7e6662a4eb893ddc1300f30"
+                "reference": "494446e32f4d9e1f194738a20cda6917f858edd4"
             },
             "require": {
                 "fleetbase/core-api": "*",
@@ -2468,10 +2484,14 @@
                 "test:unit": [
                     "pest --colors=always"
                 ],
+                "test:fees": [
+                    "php server/tests/FeeCalculatorBoundariesTest.php"
+                ],
                 "test": [
                     "@test:lint",
                     "@test:types",
-                    "@test:unit"
+                    "@test:unit",
+                    "@test:fees"
                 ]
             },
             "license": [
