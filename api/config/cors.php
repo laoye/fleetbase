@@ -27,7 +27,7 @@ return [
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => ['x-compressed-json', 'access-console-sandbox', 'access-console-sandbox-key', 'content-disposition'],
+    'exposed_headers' => ['x-compressed-json', 'access-console-sandbox', 'access-console-sandbox-key', 'content-disposition', 'x-forbox-exported'],
 
     'max_age' => 0,
 
